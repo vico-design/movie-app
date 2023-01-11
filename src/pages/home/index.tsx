@@ -54,8 +54,7 @@ export default function Home() {
   const moviesArrayProYear = Object.entries(movieListGrupped);
 
   return (
-    <div className="app">
-      <i className="ri-search-line"></i>
+    <div>
       <input
         type="text"
         name="title"
