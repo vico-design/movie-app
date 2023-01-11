@@ -1,13 +1,13 @@
 import * as React from "react";
-import { singleMovie } from "../../pages/home";
+import { SingleMovie } from "../../App";
 import { useNavigate } from "react-router-dom";
 
-export interface IRowProps {
+export type IRowProps = {
   year: string;
-  movies: singleMovie[];
-}
+  movies: SingleMovie[];
+};
 
-export default function Row({ year, movies }: IRowProps) {
+const Row = ({ year, movies }: IRowProps) => {
   const navigate = useNavigate();
 
   const handleClick = (id: string) => {
@@ -29,4 +29,6 @@ export default function Row({ year, movies }: IRowProps) {
       </div>
     </div>
   );
-}
+};
+
+export default Row;
