@@ -1,5 +1,6 @@
   
   .search__container {
+    padding: 20px;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -19,9 +20,10 @@
   }
 
   .search__form {
-    width: 30%;
     display: flex;
     justify-content: space-evenly;
+    padding: 0 30px;
+    width: 40%;
   }
 
   .search__title{
@@ -36,20 +38,21 @@
   }
 
   .search__select {
-    height: 33px;
-    border: 2px solid white;
+    height: 34px;
     width: 30%;
   }
 
    .search__button {
     height: 35px;
-    width: 25%;
+    width: 20%;
 
   } 
 
   @media only screen and (min-device-width: 360px) and (max-device-width: 700px) {
     .search__container {
       flex-direction: column;
+      padding: 20px 0px;
+
     }
     .search__form{
       width: 100%;
