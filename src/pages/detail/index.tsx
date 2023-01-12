@@ -35,7 +35,7 @@ const MovieDetails = () => {
   }, [id]);
 
   if (!detailMovie) {
-    return <p>loading...</p>;
+    return <p className="loading">Loading...</p>;
   }
 
   return (
@@ -53,15 +53,22 @@ const MovieDetails = () => {
       </header>
       <div className="text-detail">
         <p className="detail-description">{detailMovie.Plot}</p>
-
         <div className="release-rating">
-          <p className="detail-release">
+          <p>
             <span className="span">RELEASE DATE: </span>
             {detailMovie.Released}
           </p>
-          <p className="detail-rating">
+          <p>
             <span className="span">RATING: </span>
             {detailMovie.imdbRating}
+          </p>
+          <p>
+            <span className="span">COUNTRY: </span>
+            {detailMovie.Country}
+          </p>
+          <p>
+            <span className="span">ACTORS: </span>
+            {detailMovie.Actors}
           </p>
           {detailMovie.Genre && (
             <p className="genres">

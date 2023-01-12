@@ -1,6 +1,7 @@
 import * as React from "react";
 import { SingleMovie } from "../../App";
 import { useNavigate } from "react-router-dom";
+import "./styles.css";
 
 export type IRowProps = {
   year: string;
@@ -21,6 +22,7 @@ const Row = ({ year, movies }: IRowProps) => {
         {movies.map((m: any) => (
           <img
             key={m.imdbID}
+            className="row--poster"
             src={m.Poster}
             onClick={() => handleClick(m.imdbID)}
             alt={m.Title}

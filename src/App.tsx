@@ -20,6 +20,7 @@ type GrouppedResults = {
 
 const App = () => {
   const [movieListGrupped, setMovieListGrupped] = useState<GrouppedResults>({});
+  const [isResponse, setIsResponse] = useState<boolean>(true);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const App = () => {
       );
 
       if (!response.data.Search) {
+        setIsResponse(false);
         setMovieListGrupped({});
         return;
       }
@@ -63,7 +65,12 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<List movieListGrupped={movieListGrupped} />}
+            element={
+              <List
+                movieListGrupped={movieListGrupped}
+                isResponse={isResponse}
+              />
+            }
           />
           <Route path="/detail/:id" element={<Details />} />
         </Routes>
