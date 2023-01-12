@@ -12,7 +12,6 @@ type ListProps = {
 
 const List = ({ movieListGrupped, isResponse }: ListProps) => {
   const flattedResults = Object.entries(movieListGrupped);
-  console.log(flattedResults);
 
   return (
     <div>

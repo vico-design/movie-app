@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Search from "./components/search";
 import Details from "./pages/detail";
@@ -19,9 +19,9 @@ type GrouppedResults = {
 };
 
 const App = () => {
+  const webWorker = new Worker("worker.js");
   const [movieListGrupped, setMovieListGrupped] = useState<GrouppedResults>({});
   const [isResponse, setIsResponse] = useState<boolean>(true);
-
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -38,25 +38,19 @@ const App = () => {
         setMovieListGrupped({});
         return;
       }
-
-      const grouppedResults: GrouppedResults = response.data.Search.reduce(
-        (acc: GrouppedResults, movie: SingleMovie) => {
-          if (!(movie.Year in acc)) {
-            acc[movie.Year] = [movie];
-          } else {
-            acc[movie.Year].push(movie);
-          }
-          return acc;
-        },
-        {}
-      );
-
-      setMovieListGrupped(grouppedResults);
+      webWorker.postMessage(response.data.Search);
       location.pathname !== "/" && navigate("/");
     } catch (err) {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    webWorker.onmessage = (event: any) => {
+      const { data } = event;
+      setMovieListGrupped(data);
+    };
+  }, [searchContent]);
 
   return (
     <div className="app-container">
