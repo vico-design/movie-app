@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Search from "./components/search";
 import Details from "./pages/detail";
 import List from "./pages/list";
@@ -22,8 +22,6 @@ const App = () => {
   const webWorker = new Worker("worker.js");
   const [movieListGrupped, setMovieListGrupped] = useState<GrouppedResults>({});
   const [isResponse, setIsResponse] = useState<boolean>(true);
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const API_KEY = "8ea39b15";
 
@@ -39,7 +37,6 @@ const App = () => {
         return;
       }
       webWorker.postMessage(response.data.Search);
-      location.pathname !== "/" && navigate("/");
     } catch (err) {
       console.error(err);
     }

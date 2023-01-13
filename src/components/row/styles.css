@@ -1,41 +1,46 @@
 .row {
-    color: white;
-    margin: 3vw 0;
+  color: white;
+  margin: 3vw 0;
+}
+.row--title {
+  margin: 0 0 40px 0;
+  font-family: 'Roboto', sans-serif;
+
+}
+ 
+.row--posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  cursor: pointer;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.row--poster {
+  object-fit: contain;
+  max-height: 550px;
+  transition: transform 500ms;
+  margin-right: 50px;
+  border-radius: 5px;
+}
+.row--poster:hover {
+  transform: scale(1.12);
+  border-radius: 5px;
+}
+
+@media only screen and (min-device-width: 340px) and (max-device-width: 812px) {
+  .row {
+    margin: 6vw 0;
   }
   .row--title {
-    padding: 20px;
+    font-size: 1.2rem;
+    padding-bottom: 0px;
   }
-  
-  .row--posters {
-    display: flex;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    cursor: pointer;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-  }
-  
   .row--poster {
-    object-fit: contain;
-    max-height: 550px;
-    transition: transform 500ms;
-    margin-right: 50px;
-    border-radius: 5px;
+    /* width: 60%; */
+    margin-right: 20px;
+    /* transform: scale(1); */
   }
-  .row--poster:hover {
-    transform: scale(1.12);
-    border-radius: 5px;
-  }
-  
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
-    .row {
-      margin-left: 0px;
-    }
-    .row--title {
-      font-size: 1.2rem;
-      padding-bottom: 0px;
-    }
-    .row--poster {
-      width: 60%;
-    }
-  }
+ 
+}
